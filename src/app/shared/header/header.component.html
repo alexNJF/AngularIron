@@ -1,0 +1,159 @@
+<header class="mt-box-shadow">
+  <div class="container-fluid wide-content main">
+    <!-- Header top -->
+    <div class="row">
+      <div class="col-xl-7 right-box">
+        <div class="logo-container">
+          <a routerLink="/">
+            <img src="assets/images/logo.svg" loading="lazy" alt="Logo" />
+          </a>
+        </div>
+        <div class="input-float-btn search-input-container">
+          <input type="text" class="base-input input-lg" placeholder="جستجو ..." aria-label="Search" />
+          <button type="button" class="btn btn-square-icon" lazySvg="loupe"></button>
+        </div>
+      </div>
+      <div class="col-xl-5 left-actions">
+        <div class="the-col tell-number" dir="ltr">
+          <img src="assets/images/tell.svg" loading="lazy" alt="tell" />
+          <a [href]="'tel:' + tel" class="me-2">
+            <span>{{ tel }}</span>
+          </a>
+        </div>
+        <ng-container *ngIf="user">
+          <div class="the-col dropdown" dir="ltr"
+               (mouseenter)="hoverDropdown($event, userMenuContainer)"
+               (mouseleave)="hoverDropdown($event, userMenuContainer)" #userMenuContainer>
+            <div class="user-menu-trigger" data-bs-component="dropdown" data-bs-id="user-menu" #userMenuTrigger>
+              <img src="assets/icons/dropdown.svg" class="drop rotate-180-on-open" [class.open]="isUserMenuOpen" loading="lazy" alt="dropdown" />
+              <img [src]="user?.avatar ? user?.avatar : 'assets/icons/user.svg'" class="me-2" [class.avatar]="user?.avatar" loading="lazy" alt="avatar" />
+            </div>
+            <ul class="dropdown-menu" dir="rtl">
+              <li *hasRole="['admin', 'blog_editor', 'product_editor']">
+                <a class="dropdown-item" href="#" (click)="goToDashboard($event)">داشبورد</a>
+              </li>
+              <li><a class="dropdown-item" routerLink="/profile/account">پروفایل</a></li>
+              <li><a class="dropdown-item" href="#" (click)="logout($event)">خروج</a></li>
+            </ul>
+          </div>
+          <div class="the-col">
+            <a href="#" class="basket-container" (click)="$event.preventDefault()">
+              <div class="basket-items-count">
+                <span>{{ cartItemsCount }}</span>
+              </div>
+              <div>
+                <img src="assets/icons/basket.svg" loading="lazy" alt="basket" />
+              </div>
+            </a>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!user">
+          <div class="the-col">
+            <a routerLink="/auth" class="regular-icon" lazySvg="login"></a>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="hr"></div>
+  <div class="container-fluid wide-content bottom-box">
+    <!-- Header nav -->
+    <nav>
+      <!-- Nav Menu -->
+      <div class="nav-menu-container">
+        <div class="item"
+             (mouseenter)="isProductMenuVisible = true"
+             (mouseleave)="isProductMenuVisible = false">
+          <div class="item-container">
+            <div class="icon" lazySvg="menu"></div>
+            <a href="#" class="text">محصولات</a>
+          </div>
+          <div class="nav-item-menu products-menu" *ngIf="isProductMenuVisible">
+            <div class="right-col">
+              <div class="menu-items" *ngIf="products">
+                <ng-container *ngFor="let group of productGroups; let i = index">
+                  <ng-container *ngIf="group">
+                    <a href="#" (click)="$event.preventDefault()" class="menu-item"
+                       [class.active]="selectedProductGroup === group"
+                       (mouseenter)="selectedProductGroup = group">
+                      <div class="icon">
+                        <img [src]="products[group][0].icon" loading="lazy" alt="" />
+                      </div>
+                      <div class="text">
+                        <span>{{ group }}</span>
+                      </div>
+                    </a>
+                  </ng-container>
+                </ng-container>
+              </div>
+            </div>
+            <div class="left-col">
+              <div class="group-items" *ngIf="products && selectedProductGroup">
+                <a class="group-item"
+                   [routerLink]="'/product/' + product.id"
+                   (click)="isProductMenuVisible = false"
+                   *ngFor="let product of products[selectedProductGroup]">
+                  <span>{{ product.name }}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-container">
+            <div class="icon" lazySvg="settings"></div>
+            <a href="#" class="text">ماشین آلات</a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-container">
+            <div class="icon" lazySvg="factory"></div>
+            <a href="#" class="text">تولید کنندگان</a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-container">
+            <div class="icon" lazySvg="export"></div>
+            <a href="#" class="text">صادرات</a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-container">
+            <div class="icon" lazySvg="news"></div>
+            <a href="#" class="text">کیلوتن</a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-container">
+            <div class="icon" lazySvg="help"></div>
+            <a href="#" class="text">راهنمای خرید</a>
+          </div>
+        </div>
+      </div>
+      <!-- Language menu -->
+      <div class="language-menu-container dropdown" dir="ltr"
+           (mouseenter)="hoverDropdown($event, languageMenuContainer)"
+           (mouseleave)="hoverDropdown($event, languageMenuContainer)" #languageMenuContainer>
+        <div class="language-menu-trigger" data-bs-component="dropdown" data-bs-id="language-menu" #languageMenuTrigger>
+          <div class="label">
+            <span class="text-bold">{{ selectedLanguage?.code }}</span>
+            <span>-</span>
+            <span>Tooman</span>
+          </div>
+          <img src="assets/icons/dropdown.svg" class="me-2 drop rotate-180-on-open" [class.open]="isLanguageMenuOpen" loading="lazy" alt="dropdown" />
+        </div>
+        <ul class="dropdown-menu text-end">
+          <li *ngFor="let lang of languages">
+            <a class="dropdown-item" href="#" [class.active]="selectedLanguage?.id === lang.id" (click)="$event.preventDefault()">
+              <span class="text-bold">{{ lang.code }}</span>
+              <span>-</span>
+              <span>Tooman</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="overlay animated fadeIn faster"
+     *ngIf="isSearchSuggestionsVisible || isProductMenuVisible"></div>

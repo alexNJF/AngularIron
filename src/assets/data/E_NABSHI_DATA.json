@@ -1,0 +1,372 @@
+[
+  {
+    "masterName": "L 25",
+    "components": [
+      {
+        "T": 2,
+        "WEIGHT": 0.83
+      },
+      {
+        "T": 3,
+        "WEIGHT": 1.11
+      },
+      {
+        "T": 4,
+        "WEIGHT": 1.45
+      }
+    ]
+  },
+  {
+    "masterName": "L 30",
+    "components": [
+      {
+        "T": 2,
+        "WEIGHT": 1.0
+      },
+      {
+        "T": 2.5,
+        "WEIGHT": 1.15
+      },
+      {
+        "T": 3,
+        "WEIGHT": 1.36
+      },
+      {
+        "T": 4,
+        "WEIGHT": 1.78
+      }
+    ]
+  },
+  {
+    "masterName": "L 35",
+    "components": [
+      {
+        "T": 3,
+        "WEIGHT": 1.6
+      },
+      {
+        "T": 4,
+        "WEIGHT": 2.09
+      }
+    ]
+  },
+  {
+    "masterName": "L 40",
+    "components": [
+      {
+        "T": 2,
+        "WEIGHT": 1.5
+      },
+      {
+        "T": 2.5,
+        "WEIGHT": 1.55
+      },
+      {
+        "T": 3,
+        "WEIGHT": 1.84
+      },
+      {
+        "T": 4,
+        "WEIGHT": 2.42
+      }
+    ]
+  },
+  {
+    "masterName": "L 45",
+    "components": [
+      {
+        "T": 3,
+        "WEIGHT": 2.09
+      },
+      {
+        "T": 4,
+        "WEIGHT": 2.74
+      },
+      {
+        "T": 5,
+        "WEIGHT": 3.38
+      }
+    ]
+  },
+  {
+    "masterName": "L 50",
+    "components": [
+      {
+        "T": 3,
+        "WEIGHT": 2.33
+      },
+      {
+        "T": 4,
+        "WEIGHT": 3.06
+      },
+      {
+        "T": 5,
+        "WEIGHT": 3.77
+      }
+    ]
+  },
+  {
+    "masterName": "L 60",
+    "components": [
+      {
+        "T": 3,
+        "WEIGHT": 2.72
+      },
+      {
+        "T": 4,
+        "WEIGHT": 3.7
+      },
+      {
+        "T": 5,
+        "WEIGHT": 4.57
+      },
+      {
+        "T": 6,
+        "WEIGHT": 5.42
+      }
+    ]
+  },
+  {
+    "masterName": "L 63",
+    "components": [
+      {
+        "T": 5,
+        "WEIGHT": 4.81
+      },
+      {
+        "T": 6,
+        "WEIGHT": 5.72
+      }
+    ]
+  },
+  {
+    "masterName": "L 65",
+    "components": [
+      {
+        "T": 6,
+        "WEIGHT": 5.91
+      },
+      {
+        "T": 7,
+        "WEIGHT": 6.83
+      }
+    ]
+  },
+  {
+    "masterName": "L 70",
+    "components": [
+      {
+        "T": 4,
+        "WEIGHT": 4.50
+      },
+      {
+        "T": 5,
+        "WEIGHT": 5.34
+      },
+      {
+        "T": 6,
+        "WEIGHT": 6.38
+      },
+      {
+        "T": 7,
+        "WEIGHT": 7.38
+      }
+    ]
+  },
+  {
+    "masterName": "L 75",
+    "components": [
+      {
+        "T": 5,
+        "WEIGHT": 5.76
+      },
+      {
+        "T": 6,
+        "WEIGHT": 6.85
+      }
+    ]
+  },
+  {
+    "masterName": "L 80",
+    "components": [
+      {
+        "T": 6,
+        "WEIGHT": 7.34
+      },
+      {
+        "T": 7,
+        "WEIGHT": 8.48
+      },
+      {
+        "T": 8,
+        "WEIGHT": 9.64
+      }
+    ]
+  },
+  {
+    "masterName": "L 90",
+    "components": [
+      {
+        "T": 6,
+        "WEIGHT": 8.3
+      },
+      {
+        "T": 7,
+        "WEIGHT": 9.61
+      },
+      {
+        "T": 8,
+        "WEIGHT": 10.9
+      },
+      {
+        "T": 9,
+        "WEIGHT": 12.2
+      }
+    ]
+  },
+  {
+    "masterName": "L 100",
+    "components": [
+      {
+        "T": 6,
+        "WEIGHT": 9.2
+      },
+      {
+        "T": 7,
+        "WEIGHT": 10.7
+      },
+      {
+        "T": 8,
+        "WEIGHT": 12.2
+      },
+      {
+        "T": 10,
+        "WEIGHT": 15.0
+      }
+    ]
+  },
+  {
+    "masterName": "L 110",
+    "components": [
+      {
+        "T": 8,
+        "WEIGHT": 13.5
+      },
+      {
+        "T": 10,
+        "WEIGHT": 16.6
+      }
+    ]
+  },
+  {
+    "masterName": "L 120",
+    "components": [
+      {
+        "T": 8,
+        "WEIGHT": 14.7
+      },
+      {
+        "T": 10,
+        "WEIGHT": 18.2
+      },
+      {
+        "T": 12,
+        "WEIGHT": 21.6
+      }
+    ]
+  },
+  {
+    "masterName": "L 130",
+    "components": [
+      {
+        "T": 10,
+        "WEIGHT": 19.8
+      },
+      {
+        "T": 12,
+        "WEIGHT": 23.6
+      },
+      {
+        "T": 13,
+        "WEIGHT": 25.4
+      }
+    ]
+  },
+  {
+    "masterName": "L 140",
+    "components": [
+      {
+        "T": 12,
+        "WEIGHT": 25.4
+      },
+      {
+        "T": 14,
+        "WEIGHT": 29.4
+      }
+    ]
+  },
+  {
+    "masterName": "L 150",
+    "components": [
+      {
+        "T": 10,
+        "WEIGHT": 23.0
+      },
+      {
+        "T": 12,
+        "WEIGHT": 27.3
+      },
+      {
+        "T": 14,
+        "WEIGHT": 31.6
+      },
+      {
+        "T": 15,
+        "WEIGHT": 33.8
+      },
+      {
+        "T": 16,
+        "WEIGHT": 35.9
+      }
+    ]
+  },
+  {
+    "masterName": "L 160",
+    "components": [
+      {
+        "T": 14,
+        "WEIGHT": 33.9
+      },
+      {
+        "T": 16,
+        "WEIGHT": 38.4
+      }
+    ]
+  },
+  {
+    "masterName": "L 180",
+    "components": [
+      {
+        "T": 16,
+        "WEIGHT": 43.5
+      },
+      {
+        "T": 18,
+        "WEIGHT": 48.6
+      }
+    ]
+  },
+  {
+    "masterName": "L 200",
+    "components": [
+      {
+        "T": 16,
+        "WEIGHT": 48.5
+      },
+      {
+        "T": 20,
+        "WEIGHT": 59.9
+      }
+    ]
+  }
+]

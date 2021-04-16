@@ -1,0 +1,25 @@
+.title {
+  margin-top: 50px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.description {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.mobile-inputs {
+  margin: 38px 0 51px 0;
+  input {
+    min-height: 42px;
+    border-radius: 7px;
+  }
+}
+
+.country-code {
+  flex: 0 1 60px;
+  &::placeholder {
+    text-align: center;
+  }
+}

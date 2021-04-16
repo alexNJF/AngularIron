@@ -1,0 +1,63 @@
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-7 no-padding">
+            <p class="float-start">لطفا مقادیر را وارد نمایید</p>
+            <form [formGroup]="form">
+                <div class="form-group row mb-3 mt-5">
+
+                    <label for="B" class="col-sm-1 col-form-label tl">H , ضلع </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="H" class="form-control fw-12" placeholder="mm" formControlName="H" appTwoDigitDecimaNumber digit=3 float=3/>
+                    </div>
+
+                    <label for="B" class="col-sm-1 col-form-label tl">B , ضلع </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="B" [ngClass]="
+                  this.form.errors?.notrect &&
+                  this.form.get('B')?.touched
+                    ? 'form-control fw-12 rectError'
+                    : 'form-control fw-12'
+                " placeholder="mm" formControlName="B" appTwoDigitDecimaNumber digit=3 float=3/>
+                    </div>
+
+                    <label for="T" class="col-sm-2 col-form-label tl">t , ضخامت </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="T" class="form-control fw-12" placeholder="mm" formControlName="T" appTwoDigitDecimaNumber digit=2 float=3/>
+                    </div>
+
+
+                </div>
+                <div class="form-group row mb-3">
+
+                    <label for="L" class="col-sm-1 col-form-label tl">L , طول </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="L" class="form-control fw-12" placeholder="m" formControlName="L" appTwoDigitDecimaNumber digit=2 float=3/>
+                    </div>
+
+                    <label for="Count" class="col-sm-1 col-form-label">تعداد </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="Count" class="form-control fw-12" placeholder="عدد" formControlName="Count" onkeypress="return /[0-9]/i.test(event.key)" maxlength="4" />
+                    </div>
+                </div>
+                <hr class="col-10" />
+                <div class="row mt-4">
+                    <div class="col-7 offset-sm-3">
+                        (kg/m) وزن هر متر
+                        <span class="cr"> &nbsp; {{ result1M | number:'.0-2' }}&nbsp; </span>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-7 offset-sm-3">
+                        &nbsp; &nbsp; (kg) محاسبه وزن
+                        <span class="cr"> &nbsp; {{ this.result | number:'.0-2' }}&nbsp; </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-5">
+            <div class="image-container d-flex align-items-center justify-content-center">
+                <img [src]="'assets/images/calculator/RectangularHollowSection.svg'" loading="lazy" alt="" />
+            </div>
+        </div>
+    </div>
+</div>

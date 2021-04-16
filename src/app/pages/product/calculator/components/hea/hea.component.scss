@@ -1,0 +1,11 @@
+.mt-50{
+  margin-top: 50%;
+}
+
+input:-moz-read-only { /* For Firefox */
+  background-color: #f2f2f2;
+}
+
+input:read-only {
+  background-color: #f2f2f2;
+}

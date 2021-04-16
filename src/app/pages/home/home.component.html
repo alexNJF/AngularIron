@@ -1,0 +1,313 @@
+<div class="container-fluid normal-content">
+  <div class="the-row">
+    <div class="products-container">
+      <div class="title">
+        <h1 class="heading">گروه محصولات</h1>
+      </div>
+      <div class="items text-center row products-grid" *ngIf="products">
+        <ng-template #productItem
+                     let-group="group"
+                     let-id="id"
+                     let-icon="icon"
+                     let-text="text"
+                     let-index="index">
+          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
+            <a href="#" class="item" dir="ltr"
+               [routerLink]="id ? '/product/' + id : null"
+               (click)="group ? $event.preventDefault() : null"
+               [class.dropdown]="group"
+               [class.active]="products[group][0].isMenuOpen"
+               (mouseenter)="group ? hoverDropdown($event, productMenuContainer) : null"
+               (mouseleave)="group ? hoverDropdown($event, productMenuContainer) : null" #productMenuContainer>
+              <div
+                [attr.data-bs-component]="group ? 'dropdown' : null"
+                [attr.data-bs-id]="group? ('product-menu-' + index) : null"
+                [attr.data-group]="group" #productMenuTrigger>
+                <div class="icon-container">
+                  <img class="main" [src]="icon" loading="lazy" alt="icon" />
+                  <div *ngIf="group" class="dropdown-icon rotate-180-on-open" [class.open]="products[group][0].isMenuOpen" lazySvg="dropdown"></div>
+                </div>
+                <div class="text-container text-center" dir="rtl">
+                  <span>{{ text }}</span>
+                </div>
+              </div>
+              <ul class="dropdown-menu" dir="rtl" *ngIf="group">
+                <li *ngFor="let product of products[group]">
+                  <a class="dropdown-item" (click)="$event.stopPropagation()" [routerLink]="'/product/' + product.id">
+                    <span>{{ product.name }}</span>
+                  </a>
+                </li>
+              </ul>
+            </a>
+          </div>
+        </ng-template>
+        <ng-container *ngFor="let group of productGroups; let i = index">
+          <!-- Dropdown items -->
+          <ng-container *ngIf="group">
+            <ng-container
+              [ngTemplateOutlet]="productItem"
+              [ngTemplateOutletContext]="{group: group, icon: products[group][0].icon, text: group, index: i}"></ng-container>
+          </ng-container>
+          <!-- Flat items -->
+          <ng-container *ngIf="!group">
+            <ng-container *ngFor="let product of products[group]">
+              <ng-container
+                [ngTemplateOutlet]="productItem"
+                [ngTemplateOutletContext]="{group: group, id: product.id, icon: product.icon, text: product.name, index: i}"></ng-container>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="the-row">
+    <div class="sliders-container">
+      <div class="row text-center">
+        <div class="col-lg-6">
+          <app-slider [slides]="sliderOneSlides" [autoPlayEnable]="false"></app-slider>
+        </div>
+        <div class="col-lg-6">
+          <app-slider [slides]="sliderTwoSlides" [autoPlayEnable]="false"></app-slider>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row-style-one white-row-back">
+  <div class="container-fluid normal-content">
+    <div class="the-row">
+      <div class="the-head">
+        <div class="title">
+          <h1 class="heading">نماینده فروش کارخانجات</h1>
+        </div>
+        <div class="more">
+          <a href="#" (click)="$event.preventDefault()">
+            <span>نمایش بیشتر</span>
+            <span lazySvg="more"></span>
+          </a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="the-body row">
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6"
+             [class.d-max-lg-none]="i >= 4"
+             [class.d-max-md-none]="i >= 3"
+             [class.d-max-sm-none]="i >= 2"
+             [class.d-max-xs-none]="i >= 2"
+             *ngFor="let _ of [].constructor(6); let i = index">
+          <a href="#" (click)="$event.preventDefault()">
+            <div class="rs1-card" squareSize>
+              <div class="content">
+                <div class="match-parent">
+                  <div>
+                    <img src="assets/images/home/default-itemImage.svg" loading="lazy" alt="seller logo" />
+                  </div>
+                  <div class="title">
+                    <span>فولاد اصفهان</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid normal-content">
+  <div class="the-row row-style-two">
+    <div class="the-head">
+      <div class="title">
+        <h1 class="heading">فروش ویژه</h1>
+      </div>
+      <div class="more">
+        <a href="#" (click)="$event.preventDefault()">
+          <span>نمایش بیشتر</span>
+          <span lazySvg="more"></span>
+        </a>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="the-body row rs3-custom">
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6"
+           [class.d-max-lg-none]="i >= 4"
+           [class.d-max-md-none]="i >= 3"
+           [class.d-max-sm-none]="i >= 2"
+           [class.d-max-xs-none]="i >= 2"
+           *ngFor="let _ of [].constructor(5); let i = index">
+        <a href="#" (click)="$event.preventDefault()">
+          <div class="rs2-card">
+            <div class="image-container">
+              <img src="assets/images/home/factory-image.png" loading="lazy" alt="" />
+              <div class="discount">
+                <span>10</span>
+              </div>
+            </div>
+            <div class="title-container">
+              <div class="content">
+                <div class="item">
+                  <img src="assets/images/home/card-pImage.svg" alt="" />
+                </div>
+                <div class="item">
+                  <span>نورد فولاد یزد</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="the-row row-style-three">
+    <div class="the-head">
+      <div class="title">
+        <h1 class="heading">ماشین آلات</h1>
+      </div>
+      <div class="more">
+        <a href="#" (click)="$event.preventDefault()">
+          <span>نمایش بیشتر</span>
+          <span lazySvg="more"></span>
+        </a>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="the-body row rs3-custom">
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6"
+           [class.d-max-lg-none]="i >= 4"
+           [class.d-max-md-none]="i >= 3"
+           [class.d-max-sm-none]="i >= 2"
+           [class.d-max-xs-none]="i >= 2"
+           *ngFor="let _ of [].constructor(5); let i = index">
+        <a href="#" (click)="$event.preventDefault()">
+          <div class="rs3-card">
+            <div class="image-container">
+              <img [src]="'assets/images/home/machine-' + (i + 1) + '.png'" loading="lazy" alt="" />
+            </div>
+            <div class="content-container">
+              <div class="title">
+                <span>قوطی</span>
+              </div>
+              <div class="brand">
+                <span>فولاد مبارکه</span>
+              </div>
+              <div class="original-price">
+                <span>56,500</span>
+              </div>
+              <div class="text-end">
+                <div class="final-price">
+                  <span>53,500</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="the-row row-style-three">
+    <div class="the-head">
+      <div class="title">
+        <h1 class="heading">کیلوتن</h1>
+      </div>
+      <div class="more">
+        <a href="#" (click)="$event.preventDefault()">
+          <span>نمایش بیشتر</span>
+          <span lazySvg="more"></span>
+        </a>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="the-body row rs3-custom">
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6"
+           [class.d-max-lg-none]="i >= 4"
+           [class.d-max-md-none]="i >= 3"
+           [class.d-max-sm-none]="i >= 2"
+           [class.d-max-xs-none]="i >= 2"
+           *ngFor="let _ of [].constructor(5); let i = index">
+        <a href="#" (click)="$event.preventDefault()">
+          <div class="rs3-card">
+            <div class="image-container">
+              <img [src]="'assets/images/home/machine-' + (i + 1) + '.png'" loading="lazy" alt="" />
+            </div>
+            <div class="content-container">
+              <div class="title">
+                <span>قوطی</span>
+              </div>
+              <div class="brand">
+                <span>فولاد مبارکه</span>
+              </div>
+              <div class="original-price">
+                <span>56,500</span>
+              </div>
+              <div class="text-end">
+                <div class="final-price">
+                  <span>53,500</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="the-row banner-style-one">
+    <a href="#" (click)="$event.preventDefault()">
+      <img src="assets/images/home/banner-with-text.png" loading="lazy" alt="" />
+    </a>
+  </div>
+  <div class="the-row row-style-one">
+    <div class="the-head">
+      <div class="title">
+        <h1 class="heading">تولید کنندگان</h1>
+      </div>
+      <div class="more">
+        <a href="#" (click)="$event.preventDefault()">
+          <span>نمایش بیشتر</span>
+          <span lazySvg="more"></span>
+        </a>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="the-body row">
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6"
+           [class.d-max-lg-none]="i >= 4"
+           [class.d-max-md-none]="i >= 3"
+           [class.d-max-sm-none]="i >= 2"
+           [class.d-max-xs-none]="i >= 2"
+           *ngFor="let _ of [].constructor(6); let i = index">
+        <a href="#" (click)="$event.preventDefault()">
+          <div class="rs1-card" squareSize>
+            <div class="content">
+              <div class="match-parent">
+                <div>
+                  <img src="assets/images/home/default-itemImage.svg" loading="lazy" alt="seller logo" />
+                </div>
+                <div class="title">
+                  <span>فولاد اصفهان</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sponsors-container white-row-back">
+  <div class="container-fluid normal-content">
+    <div class="the-row">
+      <div class="content">
+        <div class="label-section">
+          <span>حامیان کیلوتن</span>
+        </div>
+        <div class="logo-section">
+          <div class="row" *ngFor="let _ of [].constructor(1)">
+            <div class="col-lg the-logo" *ngFor="let _ of [].constructor(6); let i = index">
+              <img [src]="'assets/images/home/sponsor-tb-' + (i + 1) + '.png'" loading="lazy" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

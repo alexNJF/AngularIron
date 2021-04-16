@@ -1,0 +1,443 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~bootstrap/dist/css/bootstrap.rtl.css";
+@import "~animate.css/source/_vars.css";
+@import "~animate.css/source/_base.css";
+@import "~mapbox-gl/dist/mapbox-gl.css";
+@import "../assets/css/IRANSans.css";
+@import "../assets/css/Roboto.css";
+@import "vars";
+
+:root {
+  --bs-breadcrumb-divider: url("/assets/images/breadcrumb.svg");
+  --bs-gutter-x: 2rem;
+}
+
+.mapboxgl-canvas {
+  outline: none !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "IRANSans", serif;
+  font-size: $fontSize;
+  background: $bodyBackground;
+}
+
+img, video {
+  max-width: 100%;
+}
+
+hr {
+  background-color: $borderColor;
+  margin: 0;
+  opacity: 1;
+}
+
+a {
+  $linkColor: #2e2e2e;
+  text-decoration: none;
+  color: $linkColor;
+  &:hover {
+    color: $linkColor;
+  }
+  &[href]:not(:disabled):hover {
+    color: $primaryColor;
+  }
+}
+
+[type="tel"], [type="url"], [type="email"], [type="number"] {
+  &::placeholder {
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+input {
+  &[type=number] {
+    &.no-arrows {
+      -moz-appearance: textfield;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button
+      {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.match-parent {
+  width: 100%;
+  height: 100%;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.mt-box-shadow {
+  @include mtBoxShadow();
+}
+
+.icon-rotate-180 {
+  img, svg {
+    transform: rotate(180deg);
+  }
+}
+
+.rotate-180-on-open {
+  transition: 0.25s;
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+.btn {
+  &:active:focus,
+  &:focus {
+    box-shadow: 0 0 0 0.25rem primaryColorWithOpacity(0.25);
+  }
+  &.btn-lg {
+    padding: 0.5rem 1.3rem !important;
+    font-size: ($fontSize + 0.15rem) !important;
+    min-height: 46px;
+  }
+  &.btn-sm {
+    padding: 0.375rem 0.75rem !important;
+    font-size: ($fontSize - 0.15rem) !important;
+  }
+  &.btn-square-icon {
+    border-radius: 100%;
+    background: $primaryColor;
+    border-color: $primaryColor;
+    color: #fff;
+    padding: 0 !important;
+    position: relative;
+    width: 45px;
+    height: 45px;
+    svg {
+      fill: #fff;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      top: calc(50% - 12.5px);
+      right: calc(50% - 12.5px);
+    }
+    &.btn-lg {
+      padding: 0 !important;
+      width: 55px;
+      height: 55px;
+      svg {
+        width: 30px;
+        height: 30px;
+        top: calc(50% - 15px);
+        right: calc(50% - 15px);
+      }
+    }
+    &.btn-sm {
+      padding: 0 !important;
+      width: 35px;
+      height: 35px;
+      svg {
+        width: 20px;
+        height: 20px;
+        top: calc(50% - 10px);
+        right: calc(50% - 10px);
+      }
+    }
+  }
+  &.btn-primary {
+    font-size: $fontSize;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 0.395rem 1rem;
+    background: primaryColorWithOpacity(0.85);
+    border-color: primaryColorWithOpacity(0.85);
+    &:active,
+    &:hover {
+      background: $primaryColor;
+      border-color: $primaryColor;
+    }
+  }
+  &.btn-outline-primary {
+    font-size: $fontSize;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 0.395rem 1rem;
+    color: $primaryColor;
+    border-color: $primaryColor;
+    &:active,
+    &:hover {
+      color: #fff;
+      background: $primaryColor;
+    }
+  }
+}
+
+.form-control {
+  &:focus {
+    box-shadow: 0 0 0 0.25rem primaryColorWithOpacity(0.25);
+    border-color: mix(white, $primaryColor, 50%) !important;
+  }
+}
+
+.base-input {
+  padding: 8px 12px;
+  outline: none;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 6px;
+  border-color: #c5c5c5;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  &:focus {
+    box-shadow: 0 0 0 0.25rem primaryColorWithOpacity(0.25);
+    border-color: mix(white, $primaryColor, 50%) !important;
+  }
+  &:disabled {
+    background: #f1f1f1;
+    border-color: #f1f1f1;
+    color: #c7c7c7;
+  }
+  &:not(:disabled)::placeholder {
+    color: #A2A2A2;
+    opacity: 1;
+  }
+  &.input-lg {
+    padding: 12px 14px;
+  }
+  &.input-sm {
+    padding: 6px 10px;
+  }
+}
+
+.dropdown-menu {
+  font-size: inherit;
+  padding: 0.5rem;
+  border: unset;
+  border-radius: 12px;
+  box-shadow: 1px 0 9px rgba(0, 0, 0, 0.11);
+  .dropdown-item {
+    border-radius: $xxLargerBorderRadius;
+    color: #737373;
+    padding: 0.5rem 1rem;
+    &.active {
+      background: transparent;
+      color: $primaryColor;
+    }
+    &:hover,
+    &:active {
+      background: #f4f4f4;
+    }
+  }
+}
+
+.regular-icon {
+  svg, img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.small-icon {
+  svg, img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.x-small-icon {
+  svg, img {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.xx-small-icon {
+  svg, img {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+.input-float-btn {
+  position: relative;
+  button {
+    &.btn-square-icon {
+      position: absolute;
+      left: 7px;
+      &.btn-sm {
+        top: calc(50% - 17.5px);
+      }
+    }
+    &.btn-primary {
+      position: absolute;
+      top: calc(50% - 17.5px);
+      left: 7px;
+    }
+  }
+}
+
+@mixin visuallyHidden() {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.visually-hidden {
+  @include visuallyHidden();
+}
+
+label.radio-container {
+  position: relative;
+  margin: 0;
+  input[type="radio"] {
+    @include visuallyHidden();
+    &:disabled {
+      + .outer-circle, ~ .inner-circle, ~ .text {
+        opacity: 0.5;
+      }
+    }
+    &:checked {
+      + .outer-circle {
+        border-color: $primaryColor;
+      }
+      ~ .inner-circle {
+        background: $primaryColor;
+      }
+    }
+    &:enabled {
+      &:focus {
+        + .outer-circle {
+          box-shadow: 0 0 0 0.375rem rgb(143 155 179 / 16%);
+        }
+      }
+    }
+  }
+  .outer-circle, .inner-circle {
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.2s;
+  }
+  .outer-circle, .inner-circle {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .outer-circle {
+    background-color: #ffffff;
+    border: 1px solid #c5c5c5;
+  }
+  .inner-circle {
+    transform: translateY(-50%) scale(0.6);
+  }
+  .text {
+    margin-right: 1.25rem;
+    padding-right: 0.5rem;
+  }
+}
+
+label.checkbox-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  input[type="checkbox"] {
+    @include visuallyHidden();
+    &:disabled {
+      + .custom-checkbox, ~ .text {
+        opacity: 0.5;
+      }
+    }
+    &:checked {
+      + .custom-checkbox {
+        background: $primaryColor;
+        border-color: $primaryColor;
+        img {
+          display: block;
+        }
+      }
+    }
+    &:enabled {
+      &:focus {
+        + .custom-checkbox {
+          box-shadow: 0 0 0 0.375rem rgb(143 155 179 / 16%);
+        }
+      }
+    }
+  }
+  .custom-checkbox {
+    position: relative;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 1px solid #c5c5c5;
+    border-radius: 3px;
+    background: #ffffff;
+    transition: 0.2s;
+    img {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+    }
+  }
+  .text:not(:empty) {
+    padding-right: 0.6875rem;
+  }
+}
+
+.tooltip {
+  font-family: inherit;
+  font-size: smaller;
+}
+
+.heading {
+  font-size: 20px;
+}
+
+.horizontal-scroll {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: auto;
+}
+
+.container-fluid {
+  &.normal-content {
+    max-width: calc(1230px + (var(--bs-gutter-x) * 2));
+  }
+  &.wide-content {
+    max-width: calc(1500px + (var(--bs-gutter-x) * 2));
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .d-max-lg-none {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .d-max-md-none {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .d-max-sm-none {
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .d-max-xs-none {
+    display: none;
+  }
+}

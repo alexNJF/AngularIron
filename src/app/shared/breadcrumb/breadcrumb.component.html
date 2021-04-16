@@ -1,0 +1,17 @@
+<nav>
+  <ol class="breadcrumb m-0">
+    <li class="breadcrumb-item">
+      <a routerLink="/">خانه</a>
+    </li>
+    <li class="breadcrumb-item"
+        *ngFor="let item of items; let i = index"
+        [class.active]="items.length === (i + 1)">
+      <ng-container *ngIf="item.onClick">
+        <a href="#" (click)="item.onClick($event)">{{ item.title }}</a>
+      </ng-container>
+      <ng-container *ngIf="item.routerLink">
+        <a [routerLink]="item.routerLink">{{ item.title }}</a>
+      </ng-container>
+    </li>
+  </ol>
+</nav>

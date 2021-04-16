@@ -1,0 +1,23 @@
+<main class="auth-layout">
+  <div class="auth-outer-container">
+    <div class="auth-inner-container">
+      <div class="header">
+        <a routerLink="/">
+          <img src="assets/images/kilooton.svg" loading="lazy" alt="icon" />
+          <img src="assets/images/logo.svg" loading="lazy" alt="logo" />
+        </a>
+      </div>
+      <app-login-or-register *ngIf="currentStep === 'LoginOrRegister'"></app-login-or-register>
+      <app-verify-otp *ngIf="currentStep === 'VerifyOTP'"></app-verify-otp>
+      <app-password *ngIf="currentStep === 'Password'"></app-password>
+      <div class="footer">
+        <span>با ورود یا ثبت نام در کیلوتن، شما </span>
+        <a href="#" (click)="$event.preventDefault()">شرایط و قوانین</a>
+        <span> استفاده از </span>
+        <span>سرویس&zwnj;های</span>
+        <span> سایت را </span>
+        <span>می&zwnj;پذیرید.</span>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,60 @@
+@import "../../../scss/vars";
+
+.title {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.verify-inputs {
+  direction: ltr;
+  text-align: left;
+  padding: 18px 0;
+  .input {
+    position: relative;
+    display: inline-block;
+    width: calc(16.666666667% - 12.5px);
+    margin-right: 15px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:focus-within {
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 10.5px;
+        right: 14px;
+        left: 14px;
+        height: 1px;
+        background: $primaryColor;
+      }
+    }
+    input {
+      text-align: center;
+      height: 75px;
+    }
+  }
+}
+
+.actions {
+  .action {
+    &.otp-lifetime-status {
+      color: #21D590;
+      font-size: 14px;
+      .counter {
+        display: inline-block;
+        width: 32px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.next-step {
+  padding-top: 15px;
+}

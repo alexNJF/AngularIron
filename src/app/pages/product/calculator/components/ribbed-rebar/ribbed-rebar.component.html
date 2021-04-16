@@ -1,0 +1,45 @@
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-7">
+            <p>لطفا مقادیر را وارد نمایید</p>
+            <form [formGroup]="form">
+                <div class="form-group row mb-3 mt-5">
+                    <label for="D" class="col-sm-1 col-form-label tl">d , قطر </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="D" class="form-control fw-12" placeholder="mm" formControlName="D" appTwoDigitDecimaNumber digit=3 float=3/>
+                    </div>
+
+                    <label for="L" class="col-sm-1 col-form-label tl">L , طول </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="L" class="form-control fw-12" placeholder="m" formControlName="L" appTwoDigitDecimaNumber digit=2 float=3/>
+                    </div>
+
+                    <label for="Count" class="col-sm-1 col-form-label tl">تعداد </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="Count" class="form-control fw-12" placeholder="عدد" formControlName="Count" onkeypress="return /[0-9]/i.test(event.key)" maxlength="4" />
+                    </div>
+                </div>
+
+                <hr class="col-9" />
+                <div class="row mt-4">
+                    <div class="col-7 offset-sm-2">
+                        (kg/m) وزن هر متر
+                        <span class="cr"> &nbsp; {{ result1M | number:'.0-2' }}&nbsp; </span>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-7 offset-sm-2">
+                        &nbsp; &nbsp; (kg) محاسبه وزن
+                        <span class="cr"> &nbsp; {{ this.result | number:'.0-2' }}&nbsp; </span>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-5 align-items-center justify-content-center align-self-center">
+            <div class="image-container d-flex align-items-center justify-content-center">
+                <img [src]="'assets/images/calculator/Reinforcementbar1.svg'" loading="lazy" alt="" />
+            </div>
+        </div>
+    </div>
+</div>

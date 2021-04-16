@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="282.911" height="112.316" viewBox="0 0 282.911 112.316">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="2.387" y2="1.487" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#ffe1d0"/>
+    </linearGradient>
+    <filter id="Rectangle_613" x="0" y="0" width="282.911" height="112.316" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="8.5" result="blur"/>
+      <feFlood flood-opacity="0.129"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Component_662_1" data-name="Component 662 – 1" transform="translate(25.5 24.5)">
+    <g transform="matrix(1, 0, 0, 1, -25.5, -24.5)" filter="url(#Rectangle_613)">
+      <rect id="Rectangle_613-2" data-name="Rectangle 613" width="231.911" height="61.316" rx="11" transform="translate(25.5 24.5)" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="Ellipse_248" data-name="Ellipse 248" transform="translate(20.876 8.365)" fill="none" stroke="#f1f1f1" stroke-width="1" opacity="0.599">
+      <circle cx="23" cy="23" r="23" stroke="none"/>
+      <circle cx="23" cy="23" r="22.5" fill="none"/>
+    </g>
+    <text id="مشخصات_فنی" data-name="مشخصات فنی" transform="translate(134.876 34.365)" font-size="12" font-family="IRANSans"><tspan x="-38.827" y="0">مشخصات فنی</tspan></text>
+    <g id="Group_1134" data-name="Group 1134" transform="translate(33.423 21.365)">
+      <path id="Path_1595" data-name="Path 1595" d="M1292.4,545.965l.033.032,5.254,5.263a.891.891,0,0,0,.635.306.905.905,0,0,0,.642-.311l5.261-5.257.029-.028a1.311,1.311,0,0,0,.2-.236.765.765,0,0,0-.1-.985.757.757,0,0,0-.544-.237.836.836,0,0,0-.439.131,1.37,1.37,0,0,0-.268.229l-.044.044-3.944,3.935c0-1.7,0-8.3,0-8.3v-.568c0-.614,0-1.248,0-1.873a.8.8,0,0,0-.78-.828h-.008a.812.812,0,0,0-.794.753,2.056,2.056,0,0,0-.008.269c0,.025,0,.049,0,.074v10.451l-2.9-2.9-.294-.3c-.292-.294-.595-.6-.9-.891a.8.8,0,0,0-.558-.228.792.792,0,0,0-.58,1.33C1292.328,545.892,1292.367,545.931,1292.4,545.965Z" transform="translate(-1287.687 -537.287)" fill="#f2711c" stroke="#f1f1f1" stroke-width="1"/>
+      <path id="Path_1596" data-name="Path 1596" d="M1241.507,743.671q0-.354,0-.709v-1.145h-1.59s0,1.236,0,1.507q0,.92,0,1.84c0,.69-.227.911-.923.912h-16.3c-.621,0-.864-.247-.865-.878s0-1.25,0-1.875v-1.508h-1.585v.346c0,.344,0,.689-.007,1.022-.008.787-.016,1.531.018,2.292a2.393,2.393,0,0,0,2.376,2.192h6.481l9.976,0a2.432,2.432,0,0,0,2.423-2.415C1241.508,744.724,1241.507,744.189,1241.507,743.671Z" transform="translate(-1220.224 -729.319)" fill="#f2711c" stroke="#f1f1f1" stroke-width="1"/>
+    </g>
+    <g id="QsmfQr.tif" transform="translate(179.176 15.582)">
+      <g id="Group_1135" data-name="Group 1135">
+        <path id="Path_1597" data-name="Path 1597" d="M746.16,249.816c0,.984,0,1.921,0,2.859q0,2.612,0,5.223a1.425,1.425,0,0,0,1.534,1.547q3.94,0,7.88,0h.567v19.508c0,.937-.36,1.486-1.1,1.662a1.6,1.6,0,0,1-.371.039q-10.3,0-20.608,0a1.384,1.384,0,0,1-1.442-1.5q-.007-4.629,0-9.258,0-9.242,0-18.485a1.419,1.419,0,0,1,1.589-1.6q5.77,0,11.539,0Zm-4.414,13.533v7.132c.943,0,1.861.045,2.773-.009a3.484,3.484,0,0,0,3.436-3.922,2.877,2.877,0,0,0-2.686-3.036A34.615,34.615,0,0,0,741.746,263.348Zm-6.162,0v7.127h1.5v-2.445c.339,0,.649.006.959,0a2.842,2.842,0,0,0,1.719-.564,2.288,2.288,0,0,0,.808-2.489,1.756,1.756,0,0,0-1.625-1.463C737.841,263.4,736.726,263.4,735.583,263.346Zm15.091,1.295h2.509v-1.22h-4.021v7.06h1.507v-2.788h2.3v-1.241h-2.293Z" transform="translate(-732.615 -249.804)" fill="#2e2e2e" stroke="#f1f1f1" stroke-width="1"/>
+        <path id="Path_1598" data-name="Path 1598" d="M970.408,258.6h-2.176l-5.533,0a1.281,1.281,0,0,1-1.417-1.412q0-3.6,0-7.192v-.342l9.15,8.872Z" transform="translate(-946.979 -249.649)" fill="#2e2e2e" stroke="#f1f1f1" stroke-width="1"/>
+        <path id="Path_1599" data-name="Path 1599" d="M902.8,487a9.216,9.216,0,0,1,1.238.009,2.054,2.054,0,0,1,1.877,2.1,2.2,2.2,0,0,1-2.339,2.5H902.8Z" transform="translate(-892.153 -472.141)" fill="#2e2e2e" stroke="#f1f1f1" stroke-width="1"/>
+        <path id="Path_1600" data-name="Path 1600" d="M804.142,487.8v-2.359a10.187,10.187,0,0,1,1.291.125.933.933,0,0,1,.686,1,.968.968,0,0,1-.672,1.076A9.843,9.843,0,0,1,804.142,487.8Z" transform="translate(-799.669 -470.698)" fill="#2e2e2e" stroke="#f1f1f1" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

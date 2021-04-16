@@ -1,0 +1,301 @@
+[
+  {
+    "masterName": "L 120 x 80",
+    "components": [
+      {
+        "T": 8,
+        "WEIGHT": 12.2
+      },
+      {
+        "T": 10,
+        "WEIGHT": 15
+      },
+      {
+        "T": 12,
+        "WEIGHT": 17.8
+      }
+    ]
+  },
+  {
+    "masterName": "L 125 x 75",
+    "components": [
+      {
+        "T": 8,
+        "WEIGHT": 12.2
+      },
+      {
+        "T": 10,
+        "WEIGHT": 15
+      },
+      {
+        "T": 12,
+        "WEIGHT": 17.8
+      }
+    ]
+  },
+  {
+    "masterName": "L 135 x 65",
+    "components": [
+      {
+        "T": 8,
+        "WEIGHT": 12.2
+      },
+      {
+        "T": 10,
+        "WEIGHT": 15.0
+      }
+    ]
+  },
+  {
+    "masterName": "L 150 x 75",
+    "components": [
+      {
+        "T": 9,
+        "WEIGHT": 15.4
+      },
+      {
+        "T": 10,
+        "WEIGHT": 17.0
+      },
+      {
+        "T": 12,
+        "WEIGHT": 20.2
+      },
+      {
+        "T": 15,
+        "WEIGHT": 24.8
+      }
+    ]
+  },
+  {
+    "masterName": "L 150 x 90",
+    "components": [
+      {
+        "T": 10,
+        "WEIGHT": 18.2
+      },
+      {
+        "T": 12,
+        "WEIGHT": 21.6
+      },
+      {
+        "T": 15,
+        "WEIGHT": 26.6
+      }
+    ]
+  },
+  {
+    "masterName": "L 150 x 100",
+    "components": [
+      {
+        "T": 10,
+        "WEIGHT": 19.0
+      },
+      {
+        "T": 12,
+        "WEIGHT": 22.5
+      }
+    ]
+  },
+  {
+    "masterName": "L 200 x 100",
+    "components": [
+      {
+        "T": 10,
+        "WEIGHT": 23.0
+      },
+      {
+        "T": 12,
+        "WEIGHT": 27.3
+      },
+      {
+        "T": 15,
+        "WEIGHT": 33.75
+      }
+    ]
+  },
+  {
+    "masterName": "L 200 x 150",
+    "components": [
+      {
+        "T": 12,
+        "WEIGHT": 32.0
+      },
+      {
+        "T": 15,
+        "WEIGHT": 39.6
+      }
+    ]
+  },
+  {
+    "masterName": "L 100 x 75",
+    "components": [
+      {
+        "T": 10,
+        "WEIGHT": 13.0
+      },
+      {
+        "T": 12,
+        "WEIGHT": 15.4
+      },
+      {
+        "T": 8,
+        "WEIGHT": 10.6
+      }
+    ]
+  },
+  {
+    "masterName": "L 100 x 65 ",
+    "components": [
+      {
+        "T": 7 ,
+        "WEIGHT": 8.77
+      },
+      {
+        "T": 8,
+        "WEIGHT": 9.94
+      },
+      {
+        "T": 10,
+        "WEIGHT": 12.30
+      }
+    ]
+  },
+  {
+    "masterName": "L 100 x 50",
+    "components": [
+      {
+        "T": 6,
+        "WEIGHT": 6.84
+      },
+      {
+        "T": 8,
+        "WEIGHT": 8.97
+      }
+    ]
+  },
+  {
+    "masterName": "L 80 x 60",
+    "components": [
+      {
+        "T": 7,
+        "WEIGHT": 7.36
+      }
+    ]
+  },
+  {
+    "masterName": "L 80 x 40",
+    "components": [
+      {
+        "T": 6,
+        "WEIGHT": 5.41
+      },
+      {
+        "T": 8,
+        "WEIGHT": 7.07
+      }
+    ]
+  },
+  {
+    "masterName": "L 75 x 50",
+    "components": [
+      {
+        "T": 6,
+        "WEIGHT": 5.65
+      },
+      {
+        "T": 8,
+        "WEIGHT": 7.39
+      }
+    ]
+  },
+  {
+    "masterName": "L 70 x 50",
+    "components": [
+      {
+        "T": 6,
+        "WEIGHT": 5.41
+      }
+    ]
+  },
+  {
+    "masterName": "L 65 x 50",
+    "components": [
+      {
+        "T": 5,
+        "WEIGHT": 4.35
+      }
+    ]
+  },
+  {
+    "masterName": "L 60 x 40",
+    "components": [
+      {
+        "T": 5,
+        "WEIGHT": 3.76
+      },
+      {
+        "T": 6,
+        "WEIGHT": 4.46
+      }
+    ]
+  },
+  {
+    "masterName": "L 60 x 30",
+    "components": [
+      {
+        "T": 5,
+        "WEIGHT": 3.36
+      }
+    ]
+  },
+  {
+    "masterName": "L 50 x 30",
+    "components": [
+      {
+        "T": 5,
+        "WEIGHT":2.96
+      }
+    ]
+  },
+  {
+    "masterName": "L 45 x 30",
+    "components": [
+      {
+        "T": 4,
+        "WEIGHT":2.25
+      }
+    ]
+  },
+  {
+    "masterName": "L 40 x 25",
+    "components": [
+      {
+        "T": 4,
+        "WEIGHT":1.93
+      }
+    ]
+  },
+  {
+    "masterName": "L 40 x 20",
+    "components": [
+      {
+        "T": 4,
+        "WEIGHT":1.77
+      }
+    ]
+  },
+  {
+    "masterName": "L 30 x 20",
+    "components": [
+      {
+        "T": 3,
+        "WEIGHT":1.12
+      },
+      {
+        "T": 4,
+        "WEIGHT":1.46
+      }
+    ]
+  }
+]

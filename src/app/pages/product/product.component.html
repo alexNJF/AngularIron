@@ -1,0 +1,164 @@
+<div class="product-layout container-fluid wide-content">
+    <div class="row">
+        <div class="right-column col-xl-2 col-lg-3 ps-lg-0">
+            <div class="products">
+                <div class="label pb-4">
+                    <span>محصولات</span>
+                </div>
+                <div class="items" *ngIf="menu">
+                    <ng-template #item let-id="id" let-icon="icon" let-text="text">
+                        <a class="the-trigger" [routerLink]="id ? ('/product/' + id) : null" (click)="(!id) ? $event.preventDefault() : null">
+                            <div class="icon regular-icon">
+                                <img [src]="icon" loading="lazy" alt="icon" />
+                            </div>
+                            <div class="text">
+                                <span>{{ text }}</span>
+                            </div>
+                        </a>
+                    </ng-template>
+                    <ng-container *ngFor="let menuGroup of menuGroups; let i = index">
+                        <!-- Dropdown items -->
+                        <ng-container *ngIf="menuGroup">
+                            <div class="item dropdown" dir="ltr" (mouseenter)="hoverDropdown($event, productMenuContainer)" (mouseleave)="hoverDropdown($event, productMenuContainer)" #productMenuContainer>
+                                <div class="product-menu-trigger" dir="rtl" data-bs-component="dropdown" [attr.data-bs-id]="'product-group-' + i" #productMenuTrigger>
+                                    <ng-container [ngTemplateOutlet]="item" [ngTemplateOutletContext]="{icon: menu[menuGroup][0].icon, text: menuGroup}"></ng-container>
+                                </div>
+                                <ul class="dropdown-menu" dir="rtl">
+                                    <li *ngFor="let row of menu[menuGroup]">
+                                        <a class="dropdown-item" [routerLink]="'/product/' + row.id">{{ row.name }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </ng-container>
+                        <!-- Flat items -->
+                        <ng-container *ngIf="!menuGroup">
+                            <div class="item" *ngFor="let row of menu[menuGroup]">
+                                <ng-container [ngTemplateOutlet]="item" [ngTemplateOutletContext]="{id: row.id, icon: row.icon, text: row.name}"></ng-container>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <div class="left-column col-xl-10 col-lg-9 pe-lg-0">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb-container">
+                <app-breadcrumb [items]="breadcrumbItems"></app-breadcrumb>
+            </div>
+            <!-- Introduce product -->
+            <div class="product">
+                <div class="row ms-0 me-0">
+                    <!-- right col (Image) -->
+                    <div class="col-xl-3 col-lg-4 ps-0 pe-0 right-col-container">
+                        <div class="right-col">
+                            <div class="image">
+                                <img [src]="product?.image" loading="lazy" alt="Product image" />
+                            </div>
+                            <div class="title text-end pe-4 pt-2 pb-2">
+                                <h1 class="h3 m-0">{{ product?.name }}</h1>
+                            </div>
+                            <div class="icons">
+                                <div class="item">
+                                    <div class="icon">
+                                        <img src="/assets/images/standard_guarantee.svg" loading="lazy" alt="" />
+                                    </div>
+                                    <div class="text">
+                                        <span>ضمانت استاندارد کالا</span>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="icon">
+                                        <img src="/assets/images/price_guarantee.svg" loading="lazy" alt="" />
+                                    </div>
+                                    <div class="text">
+                                        <span>تضمین قیمت</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Left col (Tabs) -->
+                    <div class="col-xl-9 col-lg-8 ps-0 pe-0 left-col" [class.overflow-hidden]="activeTab === catalogTab">
+                        <div class="tabs">
+                            <div class="head">
+                                <div class="item" [class.active]="activeTab === aboutTab" (click)="changeActiveTab(aboutTab)">
+                                    <span>درباره محصول</span>
+                                </div>
+                                <div class="item" [class.active]="activeTab === catalogTab" (click)="changeActiveTab(catalogTab)">
+                                    <span>مشخصات فنی</span>
+                                </div>
+                                <div class="item" [class.active]="activeTab === weightCalTab" (click)="changeActiveTab(weightCalTab)">
+                                    <span>محاسبه وزن</span>
+                                </div>
+                                <div class="item" [class.active]="activeTab === videoTab" (click)="changeActiveTab(videoTab)">
+                                    <span>فیلم محصول</span>
+                                </div>
+                            </div>
+                            <div class="body ps-3 pe-3">
+                                <ng-container *ngIf="activeTab === aboutTab">
+                                    <div class="grid product-about-grid" *ngIf="product?.about?.length" #aboutGrid>
+                                        <div class="grid-item product-about-col" *ngFor="let group of product?.about">
+                                            <div class="the-title">{{ group.title }}</div>
+                                            <div class="the-items">
+                                                <div class="row the-item" *ngFor="let item of group.items">
+                                                    <ng-container *ngIf="item.key && item.value">
+                                                        <div class="col ps-0 the-key">{{ item.key }}</div>
+                                                        <div class="col ps-0 pe-0 the-value" [innerHTML]="item.value | br: ','"></div>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="!item.key && item.value">
+                                                        <div class="col only-value" [innerHTML]="item.value | br: ','"></div>
+                                                    </ng-container>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngIf="activeTab === catalogTab">
+                                    <div class="pdf-dl-container" *ngIf="product?.catalog">
+                                        <a class="dl" [href]="product?.catalog" target="_blank">
+                                            <img src="assets/images/product-pdf-box.svg" loading="lazy" alt="" />
+                                        </a>
+                                        <div class="gear">
+                                            <img src="assets/images/gear.svg" loading="lazy" alt="" />
+                                        </div>
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngIf="activeTab === weightCalTab">
+                                    <app-calculator [productId]="product?.id?.toString()!"></app-calculator>
+                                </ng-container>
+                                <ng-container *ngIf="activeTab === videoTab">
+                                    <div class="video-player-container" *ngIf="product?.video">
+                                        <video [src]="product?.video" [controls]="true"></video>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Checkbox -->
+            <!--      <div>-->
+            <!--        <label class="checkbox-container">-->
+            <!--          <input type="checkbox" />-->
+            <!--          <span class="custom-checkbox">-->
+            <!--            <img src="assets/images/checkbox.svg" spinner="lazy" alt="checkbox" />-->
+            <!--          </span>-->
+            <!--          <span class="text">Option one</span>-->
+            <!--        </label>-->
+            <!--      </div>-->
+            <!-- Radio -->
+            <!--      <div>-->
+            <!--        <label class="radio-container">-->
+            <!--          <input type="radio" name="select" class="visually-hidden" />-->
+            <!--          <span class="outer-circle"></span>-->
+            <!--          <span class="inner-circle"></span>-->
+            <!--          <span class="text">Option one</span>-->
+            <!--        </label>-->
+            <!--      </div>-->
+            <!-- SubProducts section -->
+            <div style="padding-top: 2rem;">
+                <sub-product-table [input]="{id: productId, filters: filters}"></sub-product-table>
+            </div>
+        </div>
+    </div>
+</div>

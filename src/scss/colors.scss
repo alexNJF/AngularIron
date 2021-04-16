@@ -1,0 +1,7 @@
+@function primaryColorWithOpacity($opacity) {
+  @return rgba(242, 113, 28, $opacity);
+}
+
+$primaryColor: primaryColorWithOpacity(1);
+$bodyBackground: #fafafa;
+$borderColor: #e7e7e7;

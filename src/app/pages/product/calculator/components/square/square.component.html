@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-7 no-padding">
+            <p class="no-margin float-start">لطفا مقادیر را وارد نمایید</p>
+            <form [formGroup]="form">
+                <div class="form-group row mb-3 justify-content-start mt-5">
+                    <label for="B" class="col-sm-2 col-form-label tl">B , ضلع </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="B" class="form-control fw-12" placeholder="mm" formControlName="B" appTwoDigitDecimaNumber digit=3 float=3/>
+                    </div>
+
+                    <label for="L" class="col-sm-1 col-form-label tl">L , طول </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="L" placeholder="m" class="form-control fw-12" formControlName="L" appTwoDigitDecimaNumber digit=2 float=3/>
+                    </div>
+
+                    <label for="Count" class="col-sm-1 col-form-label tl">تعداد </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="Count" class="form-control fw-12" placeholder="عدد" formControlName="Count" onkeypress="return /[0-9]/i.test(event.key)" maxlength="4" />
+                    </div>
+                </div>
+
+                <hr/>
+
+                <hr class="col-9" />
+                <div class="row mt-4">
+                    <div class="col-7 offset-sm-3">
+                        (kg/m) وزن هر متر
+                        <span class="cr"> &nbsp; {{ result1M | number:'.0-2' }}&nbsp; </span>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-7 offset-sm-3">
+                        &nbsp; &nbsp; (kg) محاسبه وزن
+                        <span class="cr"> &nbsp; {{ this.result | number:'.0-2' }}&nbsp; </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-5 d-flex align-items-center justify-content-center">
+            <div class="image-container">
+                <img [src]="'assets/images/calculator/SquareSection2.svg'" loading="lazy" alt="" />
+            </div>
+        </div>
+    </div>
+</div>

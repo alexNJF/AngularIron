@@ -1,0 +1,17 @@
+<div>
+  <div class="title">
+    <span>ورود / ثبت نام</span>
+  </div>
+  <div class="description">
+    <span>لطفا شماره موبایل خود را وارد کنید</span>
+  </div>
+  <form [formGroup]="authForm" (ngSubmit)="loginOrRegister()">
+    <div class="input-group mobile-inputs">
+      <input type="number" formControlName="mobile" aria-label="Mobile" placeholder="برای مثال 9126843257" class="no-arrows form-control" />
+      <input type="number" formControlName="countryCode" aria-label="Code" placeholder="کد" class="no-arrows form-control text-center ps-0 pe-0 country-code" />
+    </div>
+    <div class="next-step">
+      <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="loading">{{ loading ? 'لطفا صبر کنید...' : 'ورود به کیلوتن' }}</button>
+    </div>
+  </form>
+</div>

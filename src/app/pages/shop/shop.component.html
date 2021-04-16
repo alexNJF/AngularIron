@@ -1,0 +1,154 @@
+<div class="shop-layout container-fluid wide-content">
+  <div class="row">
+    <div class="right-column col-xl-3 col-lg-4 ps-lg-0">
+      <div class="shop-basic-info">
+        <div class="shop-image">
+          <img *ngIf="shop?.image" [src]="shop?.image" loading="lazy" alt="" />
+        </div>
+        <div class="shop-net">
+          <div class="item website" *ngIf="shop?.website">
+            <div class="icon" lazySvg="website"></div>
+            <div class="text">
+              <a [href]="shop?.website" target="_blank" [innerHTML]="shop?.website"></a>
+            </div>
+          </div>
+          <div class="item website" *ngIf="shop?.email">
+            <div class="icon" lazySvg="email"></div>
+            <div class="text">
+              <a [href]="'mailto:'+shop?.email" target="_blank" [innerHTML]="shop?.email">fake@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="shop-type">
+          <button class="btn" [class.active]="activeAddressTab === mainAddressTab" (click)="changeAddressTab(mainAddressTab)">
+            <span>{{ shop?.type | shopType }}</span>
+          </button>
+          <button class="btn active"  [class.active]="activeAddressTab === officeAddressTab" (click)="changeAddressTab(officeAddressTab)">
+            <span>شرکت</span>
+          </button>
+        </div>
+        <div class="shop-address">
+          <div class="item location" *ngIf="shop?.selectedAddress?.text">
+            <div class="icon" lazySvg="location-fill"></div>
+            <div class="text">
+              <span>{{ shop?.selectedAddress?.text }}</span>
+            </div>
+          </div>
+          <div>
+            <div class="item w50 telephone" *ngIf="shop?.selectedAddress?.telephone">
+              <div class="icon" lazySvg="telephone"></div>
+              <div class="text">
+                <a [href]="'tel:'+shop?.selectedAddress?.telephone">{{ shop?.selectedAddress?.telephone }}</a>
+              </div>
+            </div>
+            <div class="item w50 fax" *ngIf="shop?.selectedAddress?.fax">
+              <div class="icon" lazySvg="fax"></div>
+              <div class="text">
+                <a [href]="'tel:'+shop?.selectedAddress?.fax">{{ shop?.selectedAddress?.fax }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="shop-map" data-bs-id="address-location" #addressLocationMap></div>
+      </div>
+    </div>
+    <div class="left-column col-xl-9 col-lg-8 pe-lg-0">
+      <!-- Breadcrumb -->
+      <div class="breadcrumb-container">
+        <app-breadcrumb [items]="breadcrumbItems"></app-breadcrumb>
+      </div>
+      <!-- Introduce shop -->
+      <div class="shop">
+        <div class="tabs">
+          <div class="head">
+            <div class="item" [class.active]="activeTab === aboutTab" (click)="changeActiveTab(aboutTab)">
+              <span>درباره شرکت</span>
+            </div>
+            <div class="item" [class.active]="activeTab === certsTab" (click)="changeActiveTab(certsTab)">
+              <span>گواهینامه ها</span>
+            </div>
+            <div class="item" [class.active]="activeTab === catalogTab" (click)="changeActiveTab(catalogTab)">
+              <span>دانلود کاتالوگ</span>
+            </div>
+            <div class="item" [class.active]="activeTab === videoTab" (click)="changeActiveTab(videoTab)">
+              <span>فیلم محصول</span>
+            </div>
+          </div>
+          <div class="body ps-3 pe-3">
+            <ng-container *ngIf="activeTab === aboutTab">
+              <div class="row about-shop-container"
+                   [class.has-about]="shop?.about?.length"
+                   [class.has-image]="aboutSlides.length">
+                <div class="col-12 about-col">
+                  <div class="grid shop-about-grid" *ngIf="shop?.about?.length" #aboutGrid>
+                    <div class="grid-item shop-about-col" *ngFor="let about of shop?.about">
+                      <div class="item key-container">
+                        <div class="key">
+                          <span>{{ about.key }}</span>
+                        </div>
+                      </div>
+                      <div class="item value">
+                        <span>{{ about.value }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 image-col" *ngIf="aboutSlides.length">
+                  <app-slider [slides]="aboutSlides"
+                              [dotsIndicatorStyle]="'rectangle'"
+                              [autoPlayEnable]="false"
+                              [sliderHeight]="'262px'"
+                              [sliderMaxWidth]="'426px'"
+                              [arrowsEnable]="false"></app-slider>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="activeTab === certsTab">
+              <div class="certs-container" *ngIf="shop?.certs?.length">
+                <div class="item" *ngFor="let cert of shop?.certs">
+                  <img [src]="cert" loading="lazy" alt="" />
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="activeTab === catalogTab">
+              <div class="pdf-dl-container" *ngIf="shop?.catalog">
+                <a [href]="shop?.catalog" target="_blank">
+                  <img class="dl" src="assets/images/shop-pfd-box.svg" loading="lazy" alt="" />
+                </a>
+                <div class="factory">
+                  <img src="assets/images/factory.svg" loading="lazy" alt="" />
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="activeTab === videoTab">
+              <div class="video-player-container" *ngIf="shop?.video">
+                <video [src]="shop?.video" [controls]="true"></video>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <!-- Content -->
+      <div class="content">
+        <div class="head">
+          <div class="item" [class.active]="activeContentTab === subProductsTab" (click)="changeContentTab(subProductsTab)">
+            <span>محصولات</span>
+          </div>
+          <div class="item" [class.active]="activeContentTab === stockExchangeTab" (click)="changeContentTab(stockExchangeTab)">
+            <span>سهام بورس</span>
+          </div>
+          <div class="item" [class.active]="activeContentTab === commentsTab" (click)="changeContentTab(commentsTab)">
+            <span>نظرات</span>
+          </div>
+        </div>
+        <div class="body">
+          <div [class.d-none]="activeContentTab !== subProductsTab">
+            <sub-product-table [input]="{id: shopId, filters: filters}"></sub-product-table>
+          </div>
+          <ng-container *ngIf="activeContentTab === stockExchangeTab"></ng-container>
+          <ng-container *ngIf="activeContentTab === commentsTab"></ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

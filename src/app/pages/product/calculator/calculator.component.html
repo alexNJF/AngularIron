@@ -1,0 +1,30 @@
+<div class="container-fluid normal-content mt-2">
+    <div class="row">
+        <div class="col-12">
+            <div [ngSwitch]="productId">
+                <claculator-square *ngSwitchCase="'26'"></claculator-square>
+                <claculator-sheet [type]=7 *ngSwitchCase="'7'"> </claculator-sheet>
+                <claculator-sheet [type]=8 *ngSwitchCase="'8'"> </claculator-sheet>
+                <claculator-sheet [type]=9 *ngSwitchCase="'9'"> </claculator-sheet>
+                <claculator-sheet [type]=11 *ngSwitchCase="'11'"> </claculator-sheet>
+                <claculator-sheet [type]=10 *ngSwitchCase="'10'"> </claculator-sheet>
+                <claculator-bullion *ngSwitchCase="'25'"></claculator-bullion>
+                <claculator-squareCans *ngSwitchCase="'16'"></claculator-squareCans>
+                <claculator-rectangularCans *ngSwitchCase="'17'"></claculator-rectangularCans>
+                <claculator-seamedPipe *ngSwitchCase="'18'"></claculator-seamedPipe>
+                <claculator-simpleRebar *ngSwitchCase="'2'"></claculator-simpleRebar>
+                <claculator-ribbedRebar *ngSwitchCase="'3'"></claculator-ribbedRebar>
+                <claculator-hea *ngSwitchCase="'15'"></claculator-hea>
+                <claculator-heb *ngSwitchCase="'24'"></claculator-heb>
+                <claculator-ipe *ngSwitchCase="'6'"></claculator-ipe>
+                <claculator-ipn *ngSwitchCase="'27'"></claculator-ipn>
+                <claculator-gutters *ngSwitchCase="'13'"></claculator-gutters>
+                <claculator-sparay *ngSwitchCase="'14'"></claculator-sparay>
+                <claculator-enabshi *ngSwitchCase="'12'"></claculator-enabshi>
+                <claculator-gnabshi *ngSwitchCase="'23'"></claculator-gnabshi>
+                <p *ngSwitchDefault> موردی پیدا نشد </p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>

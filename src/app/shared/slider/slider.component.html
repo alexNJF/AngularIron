@@ -1,0 +1,57 @@
+<ng-container *ngIf="slides?.length">
+
+  <div class="slider-container"
+       [style.width]="sliderWidth"
+       [style.height]="sliderHeight"
+       [style.maxWidth]="sliderMaxWidth"
+       [style.maxHeight]="sliderMaxHeight">
+    <!-- Spinner -->
+    <div class="spinner-container" *ngIf="!slides[currentIndex]?.loaded">
+      <div class="match-parent">
+        <app-spinner [size]="'50px'"
+                     [style.top]="'calc(50% - 25px)'"></app-spinner>
+      </div>
+    </div>
+    <!-- Slides -->
+    <div class="slide-item zero-opacity"
+         [class.d-none]="currentIndex !== i"
+         (swiperight)="navigate('prev', true)"
+         (swipeleft)="navigate('next', true)"
+         *ngFor="let slide of slides; let i = index" #slideItems>
+      <ng-container *ngIf="!slide?.type || slide?.type === 'image'">
+        <img class="image-type"
+             [src]="slide.src"
+             loading="lazy"
+             alt="slide" (load)="onSlideLoad(i)" />
+      </ng-container>
+    </div>
+    <!-- Dots (circle) -->
+    <ng-container *ngIf="dotsIndicatorEnable && dotsIndicatorStyle === 'circle'">
+      <div class="dots-indicator">
+        <div class="dot"
+             [class.active]="currentIndex === i"
+             (click)="navigate('index', true, i)"
+             *ngFor="let _ of slides; let i = index"></div>
+      </div>
+    </ng-container>
+    <!-- Arrows -->
+    <ng-container *ngIf="arrowsEnable">
+      <div class="arrow arrow-left"
+           lazySvg="dropdown"
+           (click)="navigate('prev', true)"></div>
+      <div class="arrow arrow-right"
+           lazySvg="dropdown"
+           (click)="navigate('next', true)"></div>
+    </ng-container>
+  </div>
+  <!-- Dots (rectangle) -->
+  <ng-container *ngIf="dotsIndicatorEnable && dotsIndicatorStyle === 'rectangle'">
+    <div class="rectangle-dots-indicator">
+      <div class="item"
+           [class.active]="currentIndex === i"
+           (click)="navigate('index', true, i)"
+           *ngFor="let _ of slides; let i = index"></div>
+    </div>
+  </ng-container>
+
+</ng-container>

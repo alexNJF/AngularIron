@@ -1,0 +1,9 @@
+.breadcrumb {
+  font-size: 13px;
+  .breadcrumb-item {
+    padding-right: 5px;
+    &::before {
+      padding-left: 5px;
+    }
+  }
+}

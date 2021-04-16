@@ -1,0 +1,47 @@
+<div>
+  <div class="prev-step">
+    <a href="#" (click)="prevStep($event)">
+      <img src="assets/images/arrow-previous.svg" loading="lazy" alt="back" />
+    </a>
+  </div>
+  <div class="title">
+    <span>کد تایید را وارد نمایید</span>
+  </div>
+  <div class="description">
+    <span>کد 6 رقمی برای شماره موبایل </span>
+    <span>{{ loginOrRegisterData.countryCode }}</span>
+    <span>{{ loginOrRegisterData.mobile ? loginOrRegisterData.mobile : '' }}</span>
+    <span> ارسال گردید</span>
+  </div>
+  <form (submit)="submit($event)">
+    <div class="verify-inputs">
+      <div class="input" *ngFor="let _ of [].constructor(6); let i = index">
+        <input type="number"
+               class="no-arrows form-control"
+               aria-label="OTP_Part"
+               (focus)="onInputFocus(input)"
+               (input)="onInputValueChange(i)" #input />
+      </div>
+    </div>
+    <div class="actions">
+      <div class="action" *ngIf="data.verifyFor === 'login'">
+        <a href="#" (click)="goToPassword($event)">
+          <span>ورود با رمز عبور</span>
+        </a>
+      </div>
+      <div class="action" *ngIf="timestampDiff.status === 'now' || timestampDiff.status === 'past'">
+        <a href="#" (click)="resendOTP($event)">
+          <span>ارسال مجدد کد</span>
+        </a>
+      </div>
+      <div class="action otp-lifetime-status" *ngIf="timestampDiff.status === 'future'">
+        <span>زمان باقی مانده تا ارسال مجدد کد</span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="counter">{{ timestampDiff.strMinutes + ':' + timestampDiff.strSeconds }}</span>
+      </div>
+    </div>
+    <div class="next-step">
+      <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="loading || timestampDiff.status !== 'future'">{{ loading ? 'لطفا صبر کنید...' : 'ورود به کیلوتن' }}</button>
+    </div>
+  </form>
+</div>

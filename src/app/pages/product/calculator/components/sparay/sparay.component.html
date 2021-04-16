@@ -1,0 +1,75 @@
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-8">
+            <p>لطفا مقادیر را وارد نمایید</p>
+            <form [formGroup]="form">
+                <div class="form-group row mb-3 mt-5">
+                    <div class="col-sm-4">
+                        <ng-select class="w-100 fw-12" [items]="jsonData" bindLabel="name" bindValue="value" formControlName="value" placeholder=" انتخاب سایز">
+                        </ng-select>
+                    </div>
+
+                    <label for="H" class="col-sm-2 col-form-label tl">h , ارتفاع </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="H" class="form-control fw-12" placeholder="mm" readonly [value]="H" onkeypress="return /[0-9]/i.test(event.key)" maxlength="4" />
+                    </div>
+
+                    <label for="B" class="col-sm-2 col-form-label tl">b , عرض بال </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="B" class="form-control fw-12" placeholder="mm" readonly [value]="B" onkeypress="return /[0-9]/i.test(event.key)" maxlength="2" />
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <label for="S" class="col-sm-2 col-form-label tl"> T , ضخامت جان </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="S" readonly class="form-control fw-12" placeholder="mm" [value]="S" onkeypress="return /[0-9]/i.test(event.key)" maxlength="3" />
+                    </div>
+                    <label for="T" class="col-sm-2 col-form-label tl">T , ضخامت بال</label
+          >
+          <div class="col-sm-2">
+            <input
+              type="text"
+              id="T"
+              readonly
+              class="form-control fw-12"
+              placeholder="mm"
+              [value]="T"
+              onkeypress="return /[0-9]/i.test(event.key)"
+              maxlength="3"
+            />
+          </div>
+
+          <label for="L" class="col-sm-2 col-form-label tl">L , طول  </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="L" class="form-control fw-12" placeholder="m" formControlName="L" appTwoDigitDecimaNumber digit=2 float=3 />
+                    </div>
+                </div>
+                <div class="form-group row mb-3 justify-content-end">
+                    <label for="Count" class="col-sm-2 col-form-label tl">تعداد </label>
+                    <div class="col-sm-2">
+                        <input type="text" id="Count" class="form-control fw-12" placeholder="عدد" formControlName="Count" onkeypress="return /[0-9]/i.test(event.key)" maxlength="4" />
+                    </div>
+                </div>
+
+                <hr class="col-12" />
+                <div class="row mt-4">
+                    <div class="col-7 offset-sm-5">
+                        (kg/m) وزن هر متر
+                        <span class="cr"> &nbsp; {{ WEIGHT | number:'.0-2' }}&nbsp; </span>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-7 offset-sm-5">
+                        &nbsp; &nbsp; (kg) محاسبه وزن
+                        <span class="cr"> &nbsp; {{ this.result | number:'.0-2' }}&nbsp; </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-4 align-items-center justify-content-center align-self-center">
+            <div class="image-container d-flex align-items-center justify-content-center">
+                <img [src]="'assets/images/calculator/T-Section.svg'" loading="lazy" alt="" />
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+:host ::ng-deep {
+    .vh-50 {
+        height: 50vh;
+    }
+    // .active{
+    //   border-bottom :2px solid coral !important;
+    // }
+    input:-moz-read-only {
+        /* For Firefox */
+        background-color: #f2f2f2;
+        background: #f2f2f2;
+    }
+    input:read-only {
+        background-color: #f2f2f2;
+        background: #f2f2f2;
+    }
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+        background-color: #f2711c;
+    }
+    .cr {
+        color: #F2711C;
+        font-size: 17px;
+        float: left;
+        font-family: IRANSans_Medium, serif;
+    }
+    .weight-label {
+        font-size: 12px;
+        color: #2E2E2E;
+        margin-left: 15px;
+        float: left;
+    }
+    .weight-wrapper {
+        float: left;
+    }
+    .tl {
+        text-align: end;
+        font-size: 12px;
+        padding: 7px 0px;
+    }
+    .tr {
+        text-align: start;
+        font-size: 12px;
+        padding: 7px 0px;
+    }
+    .rectError {
+        border-color: rgb(255, 6, 6);
+    }
+    .fw-12 {
+        font-size: 12px;
+    }
+    // .form-control[disabled],
+    // .form-control[readonly],
+    // fieldset[disabled] .form-control {
+    //     background-color: #F2F2F2 !important;
+    // }
+    .mt-20 {
+        margin-top: 20%;
+    }
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+        background-color: #f2721c46
+    }
+    .no-padding {
+        padding: 0;
+    }
+    .no-margin {
+        margin: 0;
+    }
+    .no-right-padding {
+        padding-right: 0;
+    }
+    .no-left-padding {
+        padding-left: 0;
+    }
+}

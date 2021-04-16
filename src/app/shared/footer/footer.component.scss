@@ -1,0 +1,206 @@
+@import "/src/scss/vars";
+
+$footerTextColor: #656565;
+$footerBorderColor: #dedede;
+
+footer {
+  background: #f4f4f4;
+}
+
+a {
+  color: $footerTextColor;
+  &[href]:hover {
+    color: $primaryColor;
+  }
+}
+
+hr {
+  background-color: $footerBorderColor;
+}
+
+.icons-container {
+  text-align: center;
+  .icons {
+    display: inline-block;
+    padding: 30px;
+    border-bottom: 1px solid rgba(119, 119, 119, 0.166);
+    .item {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 3px 35px;
+      .image {
+        img {
+          height: 51px;
+        }
+      }
+      .text {
+        margin-top: 12px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .footer-newsletter-input-shadow {
+    box-shadow: 1px 3px 9px rgba(180, 180, 180, 0.3);
+  }
+}
+
+.newsletter-container {
+  text-align: center;
+  padding: 36px 0 59px 0;
+  .description-container, .input-container {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .description-container {
+    max-width: 150px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    .title {
+      margin-bottom: 5px;
+      font-size: 15px;
+      font-weight: bold;
+      color: #2E2E2E;
+    }
+    .text {
+      font-size: 10px;
+      color: #2E2E2E;
+    }
+  }
+  .input-container {
+    input {
+      border-radius: 25px;
+      width: 330px;
+      height: 49.5px;
+      padding-left: 100px;
+      border: unset;
+    }
+    button {
+      padding-right: 1.5rem !important;
+      padding-left: 1.5rem !important;
+    }
+  }
+}
+
+.links-container {
+  $verticalMargin: 25px;
+  padding: 17px 0;
+  .group {
+    .title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: $verticalMargin;
+    }
+    .list {
+      .item {
+        margin-bottom: $verticalMargin / 2;
+        a {
+          font-size: 14px;
+          color: #6C6C6C;
+          &:hover {
+            color: $primaryColor;
+          }
+        }
+        &.social {
+          padding-top: $verticalMargin / 2;
+          .icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 20px;
+            &:last-child {
+              margin-left: 0;
+            }
+            ::ng-deep {
+              svg {
+                width: 20px;
+                height: 20px;
+                transition: 0.25s;
+                fill: #cbcaca;
+                &:hover {
+                  fill: $primaryColor;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &.slogan {
+      .logo {
+        margin-bottom: 30px;
+        img {
+          width: 134.08px;
+          height: 25.82px;
+        }
+      }
+      .description {
+        font-size: 13px;
+        color: #4B555F;
+        line-height: 1.5rem;
+      }
+    }
+  }
+}
+
+.bottom-links-container {
+  padding: 24px 0;
+  text-align: left;
+  .item {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 11px;
+    padding: 0 10px;
+    border-left: 1px solid $footerBorderColor;
+    &:last-child {
+      border-left: unset;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .newsletter-container {
+    .input-container {
+      input {
+        width: 270px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .newsletter-container {
+    .input-container {
+      input {
+        width: 300px;
+      }
+    }
+  }
+}
+
+@media (min-width: 850px) {
+  .icons-container {
+    .icons {
+      min-width: 736px;
+    }
+  }
+  .newsletter-container {
+    .description-container {
+      margin-left: 22.8px;
+    }
+    .input-container {
+      .input-float-btn {
+        input {
+          width: 358.44px;
+          padding-left: 111.26px;
+        }
+        button {
+          width: 91.06px;
+          height: 37.28px;
+          top: calc(50% - 18.64px);
+        }
+      }
+    }
+  }
+}

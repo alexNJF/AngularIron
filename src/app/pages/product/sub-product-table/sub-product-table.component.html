@@ -1,0 +1,257 @@
+<div class="scroll-target" #scrollTarget></div>
+<div class="filters-container" #filtersContainer>
+  <div class="available-filters" *ngIf="filters">
+    <div class="label item">
+      <div class="icon small-icon icon-rotate-180 me-1" lazySvg="list-outline"></div>
+      <span>فیلتر</span>
+    </div>
+    <form [formGroup]="filtersForm">
+      <div class="item dropdown" dir="ltr" data-has-event="false" *ngIf="filters?.types?.length">
+        <button type="button" data-bs-toggle="dropdown" class="btn btn-outline-primary filter-menu-trigger" dir="rtl" data-bs-id="filter-shop" #dropdownTrigger>
+          <span class="icon main x-small-icon" lazySvg="location"></span>
+          <span class="text">تعیین مبدا حمل</span>
+          <span class="icon drop xx-small-icon rotate-180-on-open" lazySvg="dropdown"></span>
+        </button>
+        <ul class="dropdown-menu" dir="rtl">
+          <ng-container *ngFor="let type of filters.types">
+            <ng-container *ngIf="filters.groupedCities">
+              <li *ngFor="let city of filters.groupedCities[type]">
+                <a class="dropdown-item">
+                  <label class="radio-container">
+                    <input type="radio" name="cityId" class="visually-hidden"
+                           (input)="onSelectedShopChange($event, city)"
+                           [checked]="selectedShop?.id === city.id && selectedShop?.type === city.type" />
+                    <span class="outer-circle"></span>
+                    <span class="inner-circle"></span>
+                    <span class="text">{{ type | shopType }} {{ city.name }}</span>
+                  </label>
+                </a>
+              </li>
+            </ng-container>
+          </ng-container>
+        </ul>
+      </div>
+      <div class="item dropdown" dir="ltr" data-has-event="false" *ngIf="filters?.products?.length">
+        <button type="button" data-bs-toggle="dropdown" class="btn btn-outline-primary filter-menu-trigger" dir="rtl" data-bs-id="filter-product" #dropdownTrigger>
+          <span class="text">تعیین محصول</span>
+          <span class="icon drop xx-small-icon rotate-180-on-open" lazySvg="dropdown"></span>
+        </button>
+        <ul class="dropdown-menu" dir="rtl">
+          <li *ngFor="let product of filters.products">
+            <a class="dropdown-item">
+              <label class="radio-container">
+                <input type="radio" name="cityId" class="visually-hidden"
+                       (input)="onSelectedProductChange($event, product)"
+                       [checked]="selectedProduct?.id === product.id" />
+                <span class="outer-circle"></span>
+                <span class="inner-circle"></span>
+                <span class="text">{{ product.name }}</span>
+              </label>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="item dropdown" dir="ltr" data-has-event="false" *ngIf="filters?.brands?.length">
+        <button type="button" data-bs-toggle="dropdown" class="btn btn-outline-primary filter-menu-trigger" data-bs-id="filter-brand" dir="rtl" #dropdownTrigger>
+          <span class="text">برند</span>
+          <span class="icon drop xx-small-icon rotate-180-on-open" lazySvg="dropdown"></span>
+        </button>
+        <ul class="dropdown-menu" dir="rtl">
+          <li *ngFor="let brand of filters.brands; let i = index" formArrayName="brands">
+            <a class="dropdown-item">
+              <label class="checkbox-container">
+                <input type="checkbox" name="province-filter" [formControlName]="i" [value]="brand.id" />
+                <span class="custom-checkbox">
+                  <img src="assets/images/checkbox.svg" loading="lazy" alt="checkbox" />
+                </span>
+                <span class="text">{{ brand.name }}</span>
+              </label>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <ng-container *ngIf="filters?.attributes?.length">
+        <div class="item dropdown" dir="ltr" data-has-event="false" *ngFor="let attribute of filters.attributes; let i = index" formArrayName="attributes">
+          <button type="button" data-bs-toggle="dropdown" class="btn btn-outline-primary filter-menu-trigger" dir="rtl"
+                  [attr.data-bs-id]="'filter-attr-' + i" #dropdownTrigger>
+            <span class="text">{{ attribute.name }}</span>
+            <span class="icon drop xx-small-icon rotate-180-on-open" lazySvg="dropdown"></span>
+          </button>
+          <ng-container [formGroupName]="i">
+            <ul class="dropdown-menu" dir="rtl">
+              <li *ngFor="let value of attribute.values; let j = index" formArrayName="values">
+                <a class="dropdown-item">
+                  <label class="checkbox-container">
+                    <input type="checkbox" [name]="'attr-filter-' + i + '-' + j" [formControlName]="j" [value]="value" />
+                    <span class="custom-checkbox">
+                      <img src="assets/images/checkbox.svg" loading="lazy" alt="checkbox" />
+                    </span>
+                    <span class="text">{{ value }}</span>
+                  </label>
+                </a>
+              </li>
+            </ul>
+          </ng-container>
+        </div>
+      </ng-container>
+      <div class="item remove-filters" *ngIf="subProductFiltersPayload" (click)="removeFilters()">
+        <span>حذف فیلتر</span>
+      </div>
+    </form>
+  </div>
+  <div class="selected-resource">
+    <ng-container *ngIf="selectedShop">
+      <span>{{ 'مبدا حمل' }}</span>
+      <span>&nbsp;{{ selectedShop.type | shopType }}&nbsp;{{ selectedShop.name }}</span>
+    </ng-container>
+    <ng-container *ngIf="selectedProduct">
+      <span>{{ 'محصول' }}</span>
+      <span>&nbsp;{{ selectedProduct.name }}</span>
+    </ng-container>
+  </div>
+</div>
+<!-- Data table -->
+<div class="data-table">
+  <div class="table-responsive" #tableContainer>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>برند</th>
+        <th>سایز</th>
+        <th>نام کالا</th>
+        <th>واحد</th>
+        <th>مقدار</th>
+        <th>وزن تقریبی</th>
+        <th>قیمت پایه</th>
+        <th>قیمت کل</th>
+        <th>&nbsp;</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="subProducts?.length">
+      <tr *ngFor="let subProduct of subProducts; let i = index">
+        <td class="brand-image">
+          <div>
+            <img [src]="subProduct?.brand?.image" class="main-img" loading="lazy" alt="brand" />
+          </div>
+          <div class="title">
+            <span>{{ subProduct?.brand?.name }}</span>
+          </div>
+        </td>
+        <td class="sub-product-length">
+          <span>{{ subProduct?.size }}</span>
+        </td>
+        <td class="sub-product-name">
+          <div class="d-inline-block text-start">
+            <div class="title">
+              <span>{{ subProduct?.name }}</span>
+            </div>
+            <div class="bottom-box">
+              <span>{{ subProduct?.selectedUnit?.baseWeight }} kg</span>
+              <span *ngIf="subProduct?.code">{{ subProduct?.code }}</span>
+            </div>
+          </div>
+        </td>
+        <td class="sub-product-units">
+          <div class="info-icon" lazySvg="info" data-bs-toggle="tooltip"
+               [attr.data-bs-id]="'helper-text-' + i"
+               [title]="
+               '<div class=\'text-start pb-2\'>' +
+               subProduct?.selectedUnit?.helperText + '<br />' +
+               'حداقل سفارش ' + (subProduct?.selectedUnit?.minOrder | formatNumber) + '<br />' +
+               'حداکثر سفارش ' + (subProduct?.selectedUnit?.maxOrder | formatNumber) +
+               '</div>'"
+               (mouseenter)="hoverUnitTextTooltip($event, tooltipTrigger)"
+               (mouseleave)="hoverUnitTextTooltip($event, tooltipTrigger)"
+               *ngIf="subProduct?.selectedUnit?.helperText" #tooltipTrigger></div>
+          <div class="units" [class.with-info-icon]="subProduct?.selectedUnit?.helperText">
+            <div class="dropdown" dir="ltr" data-has-event="false">
+              <button type="button" data-bs-toggle="dropdown" class="btn btn-outline-primary" dir="rtl"
+                      [attr.data-bs-id]="'grid-unit-' + i" #dropdownTrigger>
+                <span class="text">{{ subProduct?.selectedUnit?.name }}</span>
+                <span class="icon drop xx-small-icon rotate-180-on-open" lazySvg="dropdown"></span>
+              </button>
+              <ul class="dropdown-menu" dir="rtl">
+                <li *ngFor="let unit of subProduct.units">
+                  <a class="dropdown-item">
+                    <label class="radio-container">
+                      <input type="radio" class="visually-hidden"
+                             (input)="onChangeUnit(i, unit, numInput, $event)"
+                             [name]="'grid-unit-' + i"
+                             [value]="unit.id"
+                             [checked]="subProduct?.selectedUnit?.id === unit.id" />
+                      <span class="outer-circle"></span>
+                      <span class="inner-circle"></span>
+                      <span class="text">{{ unit.name }}</span>
+                    </label>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </td>
+        <td class="convert-weight-count">
+          <input type="number" class="base-input input-sm no-arrows" (input)="calcWeightAndPrice(i, $event)" placeholder="عدد" aria-label="Count" #numInput />
+        </td>
+        <td class="convert-weight-value">
+          <input type="text" class="base-input input-sm calculatedWeightReadOnlyInput" placeholder="kg" [disabled]="true" aria-label="Weight" />
+        </td>
+        <td class="sub-product-price">
+          <div class="value">
+            <span>{{ subProduct?.basePrice | formatNumber }}</span>
+          </div>
+        </td>
+        <td class="sub-product-price total">
+          <div class="value" *ngIf="subProduct?.totalPrice">
+            <span>{{ subProduct?.totalPrice | formatNumber }}</span>
+          </div>
+          <div class="label" *ngIf="!subProduct?.totalPrice">
+            <span>تعیین مقدار</span>
+          </div>
+        </td>
+        <td class="actions">
+          <button type="button" class="btn btn-outline-primary btn-sm">
+            <span>افزودن به سبد</span>
+          </button>
+          <div class="menu-icon">
+            <div class="dropdown" dir="ltr" data-has-event="false">
+              <div lazySvg="horizontal-dots"
+                   data-bs-toggle="dropdown"
+                   [attr.data-toggle-action]="'tableContainerToggleMinHeight'"
+                   [attr.data-bs-id]="'grid-actions-' + i" #dropdownTrigger></div>
+              <ul class="dropdown-menu" dir="rtl">
+                <li>
+                  <a class="dropdown-item">
+                    <img class="me-2" src="assets/icons/share.svg" loading="lazy" alt="" />
+                    <span>اشتراک گذاری</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item">
+                    <img class="me-2" src="assets/icons/chart.svg" loading="lazy" alt="" />
+                    <span>نوسانات قیمت</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item">
+                    <img class="me-2" src="assets/icons/heart-empty.svg" loading="lazy" alt="" />
+                    <span>افزودن به علاقه مندی</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-container" *ngIf="paginationUI && paginationUI.lastPage > 1">
+    <div class="item arrow-left regular-icon" lazySvg="arrow" *ngIf="paginationUI.prev" (click)="getSubProducts(paginationUI.currentPage - 1)"></div>
+    <div class="item" [class.active]="page === paginationUI.currentPage" (click)="getSubProducts(page)" *ngFor="let page of paginationUI.pages">
+      <a href="#" (click)="$event.preventDefault()">
+        <span>{{ page }}</span>
+      </a>
+    </div>
+    <div class="item arrow-right regular-icon" lazySvg="arrow" *ngIf="paginationUI.next" (click)="getSubProducts(paginationUI.currentPage + 1)"></div>
+  </div>
+</div>
